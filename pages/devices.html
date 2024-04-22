@@ -76,6 +76,12 @@ function applyFilters() {
       return value === 0 || device.sdcard !== undefined;
     },
 
+    // Removable battery
+    (device) => {
+      let value = radioValue("removable-battery");
+      return value === 0 || device.battery.removable;
+    },
+
     // Min screen size in inches
     (device) => {
       let value = rangeValue("screen-size-min");
@@ -407,6 +413,26 @@ function showFilters() {
         <div class="form-check" data-filter="sdcard">
           <label class="form-check-label">
             <input class="form-check-input" type="radio" name="device-filter-sdcard" value="1" />
+            Yes
+            <span class="circle no-ripple">
+              <span class="check" />
+            </span>
+          </label>
+        </div>
+
+        <p class="device-filters-header">Removable battery:</p>
+        <div class="form-check" data-filter="removable-battery">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="device-filter-removable-battery" value="0" checked />
+            No
+            <span class="circle no-ripple">
+              <span class="check" />
+            </span>
+          </label>
+        </div>
+        <div class="form-check" data-filter="removable-battery">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="device-filter-removable-battery" value="1" />
             Yes
             <span class="circle no-ripple">
               <span class="check" />
